@@ -1,0 +1,16 @@
+(define (policz_rozmien n lbm)
+  (define (moneta k)
+    (cond ((= k 1) 50)
+	  ((= k 2) 25)
+	  ((= k 3) 10)
+	  ((= k 4) 5)
+	  ((= k 5) 1)))
+  (cond ((< n 0) 0)
+	((= n 0) 1)
+	((and (= lbm 0) (> n 0)) 0)
+	(else ( + (policz_rozmien (- n (moneta lbm))
+				  lbm)
+		  (policz_rozmien n
+				  (- lbm 1))))))
+
+(policz_rozmien 110 5)
